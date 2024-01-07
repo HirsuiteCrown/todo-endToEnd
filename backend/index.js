@@ -2,8 +2,12 @@
 const express = require("express");
 const { createTodo, updateTodo } = require("./types");
 const { todo } = require("./db");
+const cors = require("cors");
+
 
 const app = express();
+app.use(cors());
+//now any frontend can hit this backend
  
 app.use(express.json())
 
@@ -54,3 +58,6 @@ app.put("/completed",async function(req,res){
     })
 })
 
+app.listen(3000);
+
+//cors lets your frontend hit your backend.
